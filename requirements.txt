@@ -10,6 +10,7 @@ httpx==0.9.3
 hyperframe==5.2.0
 idna==2.9
 multidict==4.7.5
+pyserial==3.4
 rfc3986==1.4.0
 sanic==19.12.2
 sniffio==1.1.0

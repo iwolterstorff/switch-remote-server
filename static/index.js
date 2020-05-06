@@ -1,5 +1,5 @@
 const STICK_MIN = 0;
-const STICK_MAX = 180;
+const STICK_MAX = 255;
 const STICK_MED = STICK_MAX / 2;
 
 class Report {
