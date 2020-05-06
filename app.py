@@ -1,6 +1,19 @@
-from flask import Flask, render_template
-app = Flask(__name__)
+import asyncio
 
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
+import sanic
+import ujson
+
+
+app = sanic.Sanic("switch-remote-server")
+app.config.from_pyfile('./.env')
+
+app.static('/', './static/index.html')
+app.static('/static', './static')
+
+@app.websocket('/websocket')
+async def socket(request, ws):
+    while True:
+        report = await ws.recv()
+        print(ujson.loads(report))
+
+app.run(host=app.config.HOST, port=app.config.PORT)
